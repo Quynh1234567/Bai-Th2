@@ -12,14 +12,13 @@ void onSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
 
 void setup() {
   Serial.begin(115200);
-  WiFi.mode(WIFI_STA);  // ESP-NOW cần ở chế độ STA
-
+  WiFi.mode(WIFI_STA);  
   if (esp_now_init() != ESP_OK) {
     Serial.println("Lỗi khởi tạo ESP-NOW!");
     return;
   }
 
-  // Đăng ký callback khi gửi xong
+ 
   esp_now_register_send_cb(onSent);
 
   // Thêm peer (ESP nhận)
